@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+. "$(dirname "$0")/.common.sh"
+
+: "${installed_ver:=$(installed_ver)}"
+: "${latest_ver:=$(latest_ver)}"
+
+test "x$installed_ver" = "x$latest_ver" || {
+  echo "Latest: $latest_ver installed: $installed_ver" >&2
+  return 1
+}
